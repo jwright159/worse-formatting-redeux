@@ -38,8 +38,8 @@ module.exports = (() => {
 		},
 		main:"index.js",
 		defaultConfig:[
-			{ type:"textbox", id:"wrapper", name:"Quirk query", note:"Regex query to search for to replace with quirks. Flagged global.", value:"\+\+.*?\+\+" },
-			{ type:"textbox", id:"query0", name:"Query", note:"A regex search query.", value:"\+\+" },
+			{ type:"textbox", id:"wrapper", name:"Quirk query", note:"Regex query to search for to replace with quirks. Flagged global.", value:"\\+\\+.*?\\+\\+" },
+			{ type:"textbox", id:"query0", name:"Query", note:"A regex search query.", value:"\\+\\+" },
 			{ type:"textbox", id:"repla0", name:"Replace", note:"A regex replace query.", value:"" },
 			{ type:"textbox", id:"query1", name:"Query", note:"A regex search query.", value:"" },
 			{ type:"textbox", id:"repla1", name:"Replace", note:"A regex replace query.", value:"" },
