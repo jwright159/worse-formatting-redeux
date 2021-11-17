@@ -1,6 +1,6 @@
 /**
  * @name WorseFormattingRedeux
- * @version 0.0.2
+ * @version 0.0.3
  */
 /*@cc_on
 @if (@_jscript)
@@ -31,14 +31,14 @@ module.exports = (() => {
 		info:{
 			name:"WorseFormattingRedeux",
 			authors:[{ name:"jwright159", discord_id:"432354619092631562" }],
-			version:"0.0.2",
+			version:"0.0.3",
 			description:"Enables different types of quirks in standard Pesterchum chat.",
 			github: "",
 			github_raw: ""
 		},
 		main:"index.js",
 		defaultConfig:[
-			{ type:"textbox", id:"wrapper", name:"Quirk query", note:"Regex query to search for to replace with quirks. Flagged global.", value:"\\+\\+.*?\\+\\+" },
+			{ type:"textbox", id:"wrapper", name:"Quirk query", note:"Regex query to search for to replace with quirks. Flagged global and dotAll.", value:"\\+\\+.*?\\+\\+" },
 			{ type:"textbox", id:"query0", name:"Query", note:"A regex search query.", value:"\\+\\+" },
 			{ type:"textbox", id:"repla0", name:"Replace", note:"A regex replace query.", value:"" },
 			{ type:"textbox", id:"query1", name:"Query", note:"A regex search query.", value:"" },
@@ -87,7 +87,7 @@ module.exports = (() => {
 				let settings = this.settings;
 				let queries = 0;
 				while (settings['query' + queries] !== undefined) queries++;
-				msg.content = msg.content.replace(new RegExp(settings.wrapper, 'g'),
+				msg.content = msg.content.replace(new RegExp(settings.wrapper, 'gs'),
 					function(match) {
 						if (match === undefined)
 							return ''
