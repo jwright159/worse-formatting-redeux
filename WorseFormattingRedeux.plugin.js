@@ -38,7 +38,7 @@ module.exports = (() => {
 		},
 		main:"index.js",
 		defaultConfig:[
-			{ type:"textbox", id:"wrapper", name:"Quirk query", note:"Regex query to search for to replace with quirks. Flagged global.", value:"\+\+.*?\+\+" },
+			{ type:"textbox", id:"wrapper", name:"Quirk query", note:"Regex query to search for to replace with quirks. Flagged global and dotall.", value:"\+\+.*?\+\+" },
 			{ type:"textbox", id:"query0", name:"Query", note:"A regex search query.", value:"\+\+" },
 			{ type:"textbox", id:"repla0", name:"Replace", note:"A regex replace query.", value:"" },
 			{ type:"textbox", id:"query1", name:"Query", note:"A regex search query.", value:"" },
@@ -53,6 +53,16 @@ module.exports = (() => {
 			{ type:"textbox", id:"repla5", name:"Replace", note:"A regex replace query.", value:"" },
 			{ type:"textbox", id:"query6", name:"Query", note:"A regex search query.", value:"" },
 			{ type:"textbox", id:"repla6", name:"Replace", note:"A regex replace query.", value:"" },
+			{ type:"textbox", id:"query7", name:"Query", note:"A regex search query.", value:"" },
+			{ type:"textbox", id:"repla7", name:"Replace", note:"A regex replace query.", value:"" },
+			{ type:"textbox", id:"query8", name:"Query", note:"A regex search query.", value:"" },
+			{ type:"textbox", id:"repla8", name:"Replace", note:"A regex replace query.", value:"" },
+			{ type:"textbox", id:"query9", name:"Query", note:"A regex search query.", value:"" },
+			{ type:"textbox", id:"repla9", name:"Replace", note:"A regex replace query.", value:"" },
+			{ type:"textbox", id:"query10", name:"Query", note:"A regex search query.", value:"" },
+			{ type:"textbox", id:"repla10", name:"Replace", note:"A regex replace query.", value:"" },
+			{ type:"textbox", id:"query11", name:"Query", note:"A regex search query.", value:"" },
+			{ type:"textbox", id:"repla11", name:"Replace", note:"A regex replace query.", value:"" },
 		]
 	};
 
@@ -87,13 +97,13 @@ module.exports = (() => {
 				let settings = this.settings;
 				let queries = 0;
 				while (settings['query' + queries] !== undefined) queries++;
-				msg.content = msg.content.replace(new RegExp(settings.wrapper, 'g'),
+				msg.content = msg.content.replace(new RegExp(settings.wrapper, 'gs'),
 					function(match) {
 						if (match === undefined)
 							return ''
 						for (let i = 0; i < queries; i++)
 							if (settings['query' + i] || settings['repla' + i])
-								match = match.replace(new RegExp(settings['query' + i], 'g'), settings['repla' + i]);
+								match = match.replace(new RegExp(settings['query' + i], 'gs'), settings['repla' + i]);
 						return match
 					}
 				);
